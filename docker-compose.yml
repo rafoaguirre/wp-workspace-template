@@ -71,6 +71,9 @@ services:
       - "${NGINX_PORT:-8080}:80"
     volumes:
       - wordpress_data:/var/www/html:ro
+      # Serve theme/plugin assets from the host (needed for screenshots, JS, CSS)
+      - ./wp-content/themes:/var/www/html/wp-content/themes:ro
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins:ro
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       # Also need write access to uploads for Nginx to serve them
       - ./wp-content/uploads:/var/www/html/wp-content/uploads
