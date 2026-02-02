@@ -1,0 +1,8 @@
+# Database initialization directory
+# Place .sql or .sql.gz files here to import them automatically on first run
+# Files are imported in alphabetical order
+
+# Example:
+# - 01-schema.sql
+# - 02-data.sql
+# - production-backup.sql.gz

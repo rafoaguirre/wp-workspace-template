@@ -1,0 +1,122 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# WordPress uploads directory (usually not committed)
+wp-content/uploads/*
+!wp-content/uploads/.gitkeep
+
+# WordPress cache
+wp-content/cache/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# WordPress maintenance mode
+.maintenance
+
+# Temporary files
+*.log
+*.tmp
+*.cache
+*~
+.DS_Store
+Thumbs.db
+
+# Database dumps
+*.sql
+*.sql.gz
+db-init/*.sql
+!db-init/.gitkeep
+
+# IDE and editor files
+.idea/
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Node modules (if using build tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/
+build/
+*.min.js
+*.min.css
+
+# Composer
+vendor/
+composer.lock
+
+# Docker volumes and data
+db_data/
+wordpress_data/
+
+# Docker override files (for local customization)
+docker-compose.override.yml
+
+# Local customization
+.env.example.local
+local-config.php
+
+# WordPress specific (if accidentally created in root)
+wp-config.php
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+
+# Plugin and theme development artifacts
+*.zip
+*.tar.gz
+wp-content/plugins/*/node_modules/
+wp-content/themes/*/node_modules/
+wp-content/plugins/*/vendor/
+wp-content/themes/*/vendor/
+
+# Test files
+phpunit.xml
+.phpunit.result.cache
+tests/_output/*
+tests/_support/_generated/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Backup files
+*.bak
+*.backup
+*-backup.sql
+*-old
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock.lock
+
+# Docker volumes
+db_data/
