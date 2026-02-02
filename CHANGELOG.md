@@ -4,6 +4,21 @@ All notable changes to this WordPress Docker Development Template will be docume
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Fixed
+- WordPress 6.9 theme installer compatibility issues
+- Mount theme/plugin directories to Nginx for serving static assets (screenshots, JS, CSS)
+- Add Underscore.js compatibility plugin to restore deprecated _.pluck() method
+- Fix empty themes string initialization on theme-install page preventing API calls
+- Resolve 404 errors for theme screenshots
+- Fix Backbone model initialization errors in theme browser
+
+### Changed
+- Updated .gitignore to exclude experimental themes and plugins while keeping core template files
+- Simplified README Quick Start to emphasize ./start.sh workflow
+- Updated README troubleshooting to reflect start.sh automatic port checking
+
 ## [1.0.0] - 2026-02-01
 
 ### Added

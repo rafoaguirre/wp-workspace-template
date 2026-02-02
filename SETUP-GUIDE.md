@@ -79,9 +79,14 @@
 
 1. **First time setup**
    ```bash
-   docker-compose build
-   docker-compose up -d
+   ./start.sh
    ```
+   
+   The script automatically:
+   - Checks Docker is running
+   - Detects port conflicts
+   - Builds containers
+   - Starts all services
 
 2. **Access your sites**
    - WordPress: http://localhost:8080

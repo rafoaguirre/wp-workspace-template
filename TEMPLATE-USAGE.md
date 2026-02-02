@@ -22,7 +22,6 @@ This is a reusable template for setting up WordPress development environments. C
 3. **Start development**
    ```bash
    ./start.sh
-   # Or: docker-compose build && docker-compose up -d
    ```
 
 4. **Install WordPress**
@@ -43,20 +42,20 @@ This is a reusable template for setting up WordPress development environments. C
 # Project 1
 git clone <template-repo> client-site-1
 cd client-site-1
-# Update .env ports: NGINX_PORT=8080
-docker-compose up -d
+# Update .env ports if needed: NGINX_PORT=8080
+./start.sh  # Automatically checks for port conflicts
 
 # Project 2 (different ports!)
 git clone <template-repo> client-site-2
 cd client-site-2
 # Update .env ports: NGINX_PORT=8082, PMA_PORT=8083, etc.
-docker-compose up -d
+./start.sh  # Will warn if ports are in use
 
 # Project 3
 git clone <template-repo> client-site-3
 cd client-site-3
 # Update .env ports: NGINX_PORT=8084, PMA_PORT=8085, etc.
-docker-compose up -d
+./start.sh
 ```
 
 **All three sites can run simultaneously with different ports!**

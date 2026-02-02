@@ -25,25 +25,37 @@ A Docker-based WordPress development environment focused on theme and plugin dev
 
 ## Quick Start
 
-1. **Clone or setup your project**
+1. **Clone or use this template**
    ```bash
-   cd /path/to/your/project
+   # If cloning from a repository
+   git clone <your-repo-url>
+   cd your-project
    ```
 
-2. **Start the environment**
+2. **Start the environment** (one command does it all!)
    ```bash
-   docker-compose up -d
+   ./start.sh
    ```
+   
+   The script will:
+   - ✅ Check Docker is running
+   - ✅ Check for port conflicts
+   - ✅ Build Docker images
+   - ✅ Start all services
+   - ✅ Show you access URLs
 
-3. **Access your WordPress site**
-   - WordPress: http://localhost:8080
-   - phpMyAdmin: http://localhost:8081
-   - MailHog: http://localhost:8025 (email testing)
+3. **Access your services**
+   - 🌐 WordPress: http://localhost:8080
+   - 🗄️ phpMyAdmin: http://localhost:8081
+   - 📧 MailHog: http://localhost:8025 (email testing)
 
 4. **Complete WordPress installation**
-   - Follow the on-screen WordPress setup wizard
-   - Choose your site title, username, and password
-   - All emails will be captured by MailHog (check port 8025)
+   - Open http://localhost:8080 in your browser
+   - Follow the WordPress setup wizard
+   - Choose site title, username, and password
+   - All emails are captured by MailHog (no real emails sent)
+
+**That's it!** Start developing your theme or plugin in `wp-content/`.
 
 ## Configuration
 
@@ -218,16 +230,19 @@ docker-compose exec -T db mysql -u root -prootpassword wordpress < backup.sql
 ### Stopping and Starting
 
 ```bash
-# Stop containers
+# Stop all services
 docker-compose stop
 
-# Start containers
+# Start services (if already built)
 docker-compose start
 
-# Stop and remove containers (database persists)
+# Restart everything (rebuild if needed)
+./start.sh
+
+# Stop and remove containers (database persists in volumes)
 docker-compose down
 
-# Remove everything including database
+# Remove everything including database volumes (⚠️ destroys data)
 docker-compose down -v
 ```
 
@@ -387,12 +402,21 @@ wp search-replace 'http://localhost:8080' 'https://yoursite.com' --all-tables
 ## Troubleshooting
 
 ### Port already in use
-If port 8080 or 8081 is already in use, change it in `.env`:
-```bash
-NGINX_PORT=8082
-PMA_PORT=8083
-```
-Then restart: `docker-compose down && docker-compose up -d`
+The `start.sh` script checks for port conflicts automatically. If you see warnings:
+
+1. **Change the ports** - Edit `.env`:
+   ```bash
+   NGINX_PORT=8082
+   PMA_PORT=8083
+   MAILHOG_WEB_PORT=8026
+   ```
+   Then restart: `docker-compose down && ./start.sh`
+
+2. **Stop conflicting services** - Find and stop what's using the port:
+   ```bash
+   # macOS/Linux - example for port 8080
+   lsof -ti:8080 | xargs kill -9
+   ```
 
 ### Permission issues
 If you encounter permission errors:
